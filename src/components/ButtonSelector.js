@@ -3,8 +3,7 @@ const ButtonSelector = (props) => {
 
   function buttonClick(event){
     props.click(event.target.id);
-    console.log(event.target.id)
-
+    console.log(event.target.id);
   }
   return (
     <div>

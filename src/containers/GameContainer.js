@@ -16,7 +16,7 @@ class GameContainer extends React.Component{
     ["white", "white", "white", "white", "white", "white"]];
 
     this.state = {
-      currentPlayer: null,
+      currentPlayer: "No one",
       counterColour: null,
       grid: grid
     }
@@ -24,6 +24,7 @@ class GameContainer extends React.Component{
     this.handleClick = this.handleClick.bind(this);
     this.togglePlayer = this.togglePlayer.bind(this);
     this.toggleColour = this.toggleColour.bind(this);
+    this.clearGame = this.clearGame.bind(this);
   }
 
 
@@ -79,6 +80,27 @@ class GameContainer extends React.Component{
       counterColour: "red"
     })
     e.target.style.visibility="hidden";
+    let button = document.querySelector("#invisible");
+    button.style.visibility="visible";
+  }
+
+  clearGame(e) {
+    const grid = [
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"]];
+    this.setState({
+      grid: grid,
+      currentPlayer: "No one",
+      counterColour: null
+    })
+    let button = document.querySelector('#start-button');
+    button.style.visibility = "visible";
+    e.target.style.visibility="hidden";
   }
 
   render(){
@@ -86,6 +108,7 @@ class GameContainer extends React.Component{
       <ButtonSelector click={this.handleClick}/>
       <Grid grid={this.state.grid} colour={this.state.counterColour}/>
       <button id="start-button" onClick={this.startClicked}>Start game</button>
+      <button id="invisible" onClick={this.clearGame}>Restart</button>
       <p id="current-player-tag">Current player: {this.state.currentPlayer}</p>
     </div>)
   }

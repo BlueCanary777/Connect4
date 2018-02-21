@@ -14,8 +14,8 @@ body {
   flex-direction: row;
 }
 
-#invisble {
-  display: none;
+#invisible {
+  visibility: hidden;
 }
 #red {
   background-color: red;
